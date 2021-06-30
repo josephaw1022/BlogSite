@@ -17,20 +17,6 @@ export default defineComponent({
       } as DataModel,
     };
   },
-
-  methods: {
-    showError(): boolean {
-      if (this.$store.state.apiData === "") {
-        return true;
-      }
-      return false;
-    },
-  },
-
-  mounted() {
-    this.name = "Jake";
-    this.$store.dispatch("consumeAPI");
-  },
 });
 </script>
 
@@ -45,7 +31,6 @@ export default defineComponent({
     "
   >
     <div
-      v-if="!showError()"
       class="
         flex-col flex
         bg-gradient-to-r
@@ -70,20 +55,5 @@ export default defineComponent({
         <span class="text-purple-600"> Welcome to</span> the Whit Blog
       </h1>
     </div>
-    <h1
-      v-else
-      class="
-        flex-col flex
-        rounded-lg
-        shadow-lg
-        p-2
-        bg-white
-        border-white border-4
-        text-black text-4xl
-        bold
-      "
-    >
-      The connection isn't working properly
-    </h1>
   </div>
 </template>
