@@ -1,0 +1,31 @@
+$time: 400ms;
+
+.slide-up-enter-active {
+  transition: opacity $time, transform $time;
+}
+
+.slide-up-enter-from,
+.slide-up-leave-to {
+  opacity: 0;
+  transform: translatey(100%);
+}
+
+.slide-left-enter-active {
+  transition: opacity $time, transform $time;
+}
+
+.slide-left-enter-from,
+.slide-left-leave-to {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.slide-right-enter-active {
+  transition: opacity $time, transform $time;
+}
+
+.slide-right-enter-from,
+.slide-right-leave-to {
+  opacity: 0;
+  transform: translateX(-100%);
+}

@@ -1,4 +1,12 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+import Bio from "@/views/Bio.vue";
+import "../assets/animations/transitions.scss";
+import Blog from "@/views/Blog.vue";
+
+import {
+  createRouter,
+  createWebHistory,
+  RouteRecordRaw,
+} from "vue-router";
 import Home from "../views/Home.vue";
 
 const routes: Array<RouteRecordRaw> = [
@@ -6,15 +14,25 @@ const routes: Array<RouteRecordRaw> = [
     path: "/",
     name: "Home",
     component: Home,
+    meta: {
+      transition: "slide-right",
+    },
   },
   {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+    path: "/bio",
+    name: "Bio",
+    component: Bio,
+    meta: {
+      transition: "slide-up",
+    },
+  },
+  {
+    path: "/blog",
+    name: "Blog",
+    component: Blog,
+    meta: {
+      transition: "slide-left",
+    },
   },
 ];
 

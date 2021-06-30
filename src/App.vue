@@ -1,30 +1,38 @@
-<template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view />
-</template>
+<script lang="ts">
+import { defineComponent } from "@vue/composition-api";
+import Navbar from "./components/Navbar.vue";
+import AOS from "aos";
+
+export default defineComponent({
+  created() {
+    AOS.init();
+  },
+  components: {
+    Navbar,
+  },
+});
+</script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
+@import url("./style/style.scss");
 </style>
+
+<template>
+  <main
+    class="
+      min-h-full
+      overflow-x-hidden
+      bg-gradient-to-t
+      from-purple-500
+      via-black
+      to-green-500
+    "
+  >
+    <Navbar />
+    <router-view v-slot="{ Component, route }">
+      <transition :name="route.meta.transition" mode="out-in">
+        <component :is="Component" :key="$route.path"> </component>
+      </transition>
+    </router-view>
+  </main>
+</template>
