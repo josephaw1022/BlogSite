@@ -4,7 +4,6 @@ import { defineComponent } from "@vue/composition-api";
 import Button from "../components/Button.vue";
 export default defineComponent({
   components: {
-    HelloWorld,
     Button,
   },
 });
@@ -19,18 +18,51 @@ export default defineComponent({
 <template>
   <div class="justify-evenly flex flex-col items-center">
     <section class="div">
-      <HelloWorld
-        data-aos="zoom-in-up"
-        msg="Welcome to Your Vue.js + TypeScript App"
-      />
+      <div
+        class="
+          min-h-screen
+          flex
+          justify-center
+          items-center
+          bg-transparent
+        "
+      >
+        <div
+          class="
+            flex-col flex
+            bg-gradient-to-r
+            rounded-lg
+            shadow-lg
+            p-2
+            gap-2
+            mx-2
+          "
+        >
+          <h1
+            class="
+              text-purple-500
+              bg-white
+              border-white border-2
+              md:text-4xl
+              text-lg
+              p-2
+              rounded-sm
+            "
+          >
+            <span class="text-purple-600"> Welcome to</span> the Whit
+            Blog
+          </h1>
+        </div>
+      </div>
     </section>
     <div
       class="
         customWidth
-        min-h-screen
+        h-72
+        min-h-full
         flex flex-col
         items-center
-        justify-evenly
+        justify-start
         gap-2
       "
     >

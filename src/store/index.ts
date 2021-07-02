@@ -3,7 +3,7 @@ import axios from "axios";
 export default createStore({
   state: {
     count: 0,
-    apiData: "",
+    apiData: [],
     alreadyFetchedData: false,
   },
 
@@ -14,22 +14,15 @@ export default createStore({
     stopFetching: (state) => (state.alreadyFetchedData = true),
   },
 
-  actions: {
-    async consumeAPI() {
-      if (!this.state.alreadyFetchedData) {
-        const tempVal = await axios
-          .get("http://localhost:4000/")
-          .then((request) => request.data);
-        this.commit({
-          type: "setAPIData",
-          payload: { value: tempVal },
-        });
-      }
-      this.commit({
-        type: "stopFetching",
-      });
-    },
-  },
+  actions: {},
 
   modules: {},
+
+  getters: {
+    fetchAPIDATA: function (state) {
+      return state.apiData;
+    },
+  },
 });
+
+

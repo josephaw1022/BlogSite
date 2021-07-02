@@ -1,13 +1,14 @@
 import Bio from "@/views/Bio.vue";
-import "../assets/animations/transitions.scss";
 import Blog from "@/views/Blog.vue";
-
 import {
   createRouter,
   createWebHistory,
   RouteRecordRaw,
 } from "vue-router";
+import "../assets/animations/transitions.scss";
 import Home from "../views/Home.vue";
+
+import BlogDetail from "@/views/BlogDetail.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -28,10 +29,19 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: "/blog",
-    name: "Blog",
+    name: "BlogList",
     component: Blog,
     meta: {
       transition: "slide-left",
+    },
+  },
+  {
+    path: "/blog/:id",
+    name: "BlogDetail",
+
+    component: BlogDetail,
+    meta: {
+      transition: "slide-right",
     },
   },
 ];

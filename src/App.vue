@@ -22,7 +22,7 @@ export default defineComponent({
     class="
       min-h-full
       overflow-x-hidden
-      bg-gradient-to-t
+      bg-gradient-to-tl
       from-purple-500
       via-black
       to-green-500
