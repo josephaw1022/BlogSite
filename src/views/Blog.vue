@@ -5,12 +5,6 @@ import { defineComponent } from "@vue/composition-api";
 export default defineComponent({
   name: "Blog",
 
-  methods: {
-    scrollTop: function () {
-      window.scrollTo(0, 0);
-    },
-  },
-
   data() {
     return {
       apiData: [],
