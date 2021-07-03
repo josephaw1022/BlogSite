@@ -5,7 +5,7 @@ import {
   createWebHistory,
   RouteRecordRaw,
 } from "vue-router";
-import "../assets/animations/transitions.scss";
+import "../animations/transitions.scss";
 import Home from "../views/Home.vue";
 
 import BlogDetail from "@/views/BlogDetail.vue";
@@ -38,7 +38,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/blog/:id",
     name: "BlogDetail",
-
+    props: true,
     component: BlogDetail,
     meta: {
       transition: "slide-right",

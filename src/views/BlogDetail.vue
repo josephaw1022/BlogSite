@@ -1,6 +1,7 @@
 <script lang="ts">
 import { defineComponent } from "@vue/composition-api";
 import axios from "axios";
+import router from "../routes/index";
 export default defineComponent({
   data() {
     return {
@@ -12,14 +13,29 @@ export default defineComponent({
       },
       id: String(this.$route.params.id),
       url: "https://joe-whiteaker-drf-blog.herokuapp.com/api/article/",
+      contentFormatted: [],
     };
   },
   async mounted() {
-    await this.id;
     axios
       .get(this.url + this.id)
-      .then((value) => value.data)
-      .then((value) => (this.value = value))
+      .then((data) => data.data)
+      .then((data) => (this.apiData = data))
+      .then((data) => (this.value = data))
+      .then(
+        (data) =>
+          (this.contentFormatted = data.content
+            .split("\\r")
+            .filter((eachValue: string) => {
+              if (eachValue != "\\n\\n\r") {
+                return eachValue;
+              }
+            }))
+      )
+      .then((data) => (this.contentFormattedt = data))
+      .then(() =>
+        console.log("contentFormatted, ", this.contentFormatted)
+      )
       .catch((error) => console.log(error));
   },
 });
@@ -30,9 +46,35 @@ export default defineComponent({
 .blog-detail {
   font-family: "Work Sans", sans-serif;
 }
+
+@keyframes fadeInAnimation {
+  from {
+    transform: scale(0);
+  }
+  to {
+    tranform: scale(1);
+  }
+}
+
+.fadeIn {
+  animation: fadeInAnimation 400ms ease;
+}
 </style>
 
 <template>
+  <div
+    class="
+      h-24
+      flex
+      justify-between
+      items-center
+      bg-white
+      px-10
+      min-h-full
+    "
+  >
+    <router-link class="text-black" to="/blog">Back</router-link>
+  </div>
   <div
     class="
       blog-detail
@@ -42,11 +84,12 @@ export default defineComponent({
       justify-start
       items-center
       bg-white
-      gap-10
+      gap-5
     "
   >
-    <div class="my-10">
+    <div class="my-10 fadeIn">
       <h1
+        v-show="value.title != undefined"
         class="text-black text-md sm:text-md md:text-2xl lg:text-4xl"
       >
         {{ value.title }}
@@ -57,9 +100,21 @@ export default defineComponent({
       <br />
     </div>
 
-    <div class="w-32 md:w-48 lg:w-80 h-auto">
-      <p class="text-black text-sm sm:text-md break-word">
-        {{ value.content }}
+    <div
+      class="tranform md:w-92 h-auto fadeIn mx-5 px-5"
+      v-for="paragraphs in contentFormatted"
+      :key="paragraphs[0]"
+    >
+      <p
+        class="
+          text-black text-sm
+          sm:text-lg
+          break-word
+          text-left
+          my-3
+        "
+      >
+        {{ "    " + paragraphs.replace("\\r", "").toString() }}
       </p>
     </div>
   </div>

@@ -1,29 +1,22 @@
 <template>
-  <div
+  <h1
     class="
-      flex-col flex
-      bg-gradient-to-r
+      text-purple-500
+      bg-white
+      border-white border-2
+      md:text-xl
+      text-lg
+      p-2
       rounded-lg
-      shadow-lg
-      p-1
-      gap-1
-      lg:scale-150
+      shadow-xl
+      transform
+      hover:shadow-2xl
+      duration-200
+      hover:scale-105
     "
   >
-    <h1
-      class="
-        text-purple-500
-        bg-white
-        border-white border-2
-        md:text-xl
-        text-lg
-        p-2
-        rounded-sm
-      "
-    >
-      {{ text }}
-    </h1>
-  </div>
+    {{ text }}
+  </h1>
 </template>
 
 <script lang="ts">

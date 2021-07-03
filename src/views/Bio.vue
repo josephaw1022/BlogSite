@@ -6,15 +6,22 @@
       flex
       justify-center
       items-center
+      gap-5
+      flex-wrap
     "
   >
-    <div class="flex-row flex justify-center items-center gap-2">
-      <img
-        src="https://githubreadmejoewhiteaker.s3.amazonaws.com/GithubRepoPictures/allevents.png"
-        class="h-48 rounded-md bg-fixed"
-      />
+    <div class="flex justify-center items-center">
+      <div
+        class="
+          bg-green-500
+          border-green-500 border-2
+          rounded-full
+          w-48
+          h-48
+        "
+      ></div>
     </div>
-    <div class="mx-2 my-2 w-56">
+    <div class="my-5 w-56 mx-2">
       <h1 class="text-white text-2xl">Title</h1>
       <p class="text-white text-sm">...</p>
     </div>

@@ -8,6 +8,7 @@ export default defineComponent({
 
 <style lang="scss">
 #nav {
+  position: sticky !important;
   padding: 30px;
 
   a {
@@ -24,6 +25,8 @@ export default defineComponent({
 <template>
   <div
     class="
+      sticky
+      top-100
       h-26
       min-w-full
       flex

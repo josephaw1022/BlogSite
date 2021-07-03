@@ -21,79 +21,41 @@ export default defineComponent({
       <div
         class="
           min-h-screen
-          flex
+          flex flex-col
+          gap-5
           justify-center
           items-center
           bg-transparent
         "
       >
+        <h1 class="text-white text-2xl lg:text-4xl">
+          Whiteaker's Blog
+        </h1>
         <div
           class="
-            flex-col flex
-            bg-gradient-to-r
-            rounded-lg
-            shadow-lg
-            p-2
-            gap-2
-            mx-2
+            gap-8
+            sm:gap-4
+            flex flex-wrap flex-row
+            justify-evenly
           "
         >
-          <h1
-            class="
-              text-purple-500
-              bg-white
-              border-white border-2
-              md:text-4xl
-              text-lg
-              p-2
-              rounded-sm
-            "
+          <a
+            href="https://joe-whiteaker-linktree.herokuapp.com/"
+            target="_blank"
           >
-            <span class="text-purple-600"> Welcome to</span> the Whit
-            Blog
-          </h1>
+            <Button text="Link tree" />
+          </a>
+
+          <Button text="Contact Me" />
+
+          <a
+            href="https://joseph-whiteaker.netlify.app/"
+            target="_blank"
+          >
+            <Button text="Portfolio Site"></Button>
+          </a>
         </div>
       </div>
     </section>
-    <div
-      class="
-        customWidth
-        h-72
-        min-h-full
-        flex flex-col
-        items-center
-        justify-start
-        gap-2
-      "
-    >
-      <h1
-        data-aos="zoom-in"
-        class="text-white rounded-lg p-1 text-4xl lg:text-6xl my-4"
-      >
-        My Links
-      </h1>
-      <div
-        class="gap-8 sm:gap-4 flex flex-wrap flex-row justify-evenly"
-      >
-        <a
-          href="https://joe-whiteaker-linktree.herokuapp.com/"
-          target="_blank"
-        >
-          <Button text="Link tree" data-aos="fade-left" />
-        </a>
-
-        <Button text="Contact Me" data-aos="zoom-in" />
-
-        <a
-          href="https://joseph-whiteaker.netlify.app/"
-          target="_blank"
-        >
-          <Button
-            text="Portfolio Site"
-            data-aos="fade-right"
-          ></Button>
-        </a>
-      </div>
-    </div>
   </div>
 </template>

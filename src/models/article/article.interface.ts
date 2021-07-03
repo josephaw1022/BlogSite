@@ -1,7 +1,8 @@
-interface ArticleModel {
-  id: number;
+export interface Article {
   title: string;
   content: string;
+  active: boolean;
   date: Date;
-  img: ImageData;
 }
+
+export type ArticleList = Article[];

@@ -9,8 +9,7 @@ export default createStore({
 
   mutations: {
     increment: (state) => state.count++,
-    setAPIData: (state, payload) =>
-      (state.apiData = payload.payload.value),
+    setAPIData: (state, payload) => (state.apiData = payload.value),
     stopFetching: (state) => (state.alreadyFetchedData = true),
   },
 
@@ -24,5 +23,3 @@ export default createStore({
     },
   },
 });
-
-

@@ -1,13 +1,24 @@
 <script lang="ts">
 import axios from "axios";
 import { defineComponent } from "@vue/composition-api";
+
 export default defineComponent({
   name: "Blog",
+
+  methods: {
+    scrollTop: function () {
+      window.scrollTo(0, 0);
+    },
+  },
 
   data() {
     return {
       apiData: [],
     };
+  },
+
+  beforeMount() {
+    this.scrollTop();
   },
 
   async mounted() {
@@ -17,6 +28,13 @@ export default defineComponent({
       )
       .then((data) => data.data)
       .then((data) => (this.apiData = data))
+      .then((data) =>
+        this.$store.commit("setAPIData", { value: data })
+      )
+      .then(() => console.log(this.$store.state.apiData))
+      .then(() => {
+        console.log("apiData = ", this.apiData);
+      })
       .catch((error) => console.log(error));
   },
 });
@@ -27,35 +45,48 @@ export default defineComponent({
     <section
       class="
         min-h-screen
-        grid grid-cols-2
+        grid
+        md:grid-cols-2
+        grid-cols-1 grid-flow-row
+        transform
         gap-2
-        justify-items-center
+        justify-center
         items-center
+        overflow-y-visible
       "
-      v-for="article in apiData"
-      :key="article.id"
     >
       <router-link
+        v-for="article in apiData.reverse()"
+        :key="article.id"
         :to="{ name: 'BlogDetail', params: { id: article.id } }"
+        class="
+          transform
+          gap-2
+          justify-center
+          self-center
+          mx-5
+          h-48
+          my-5
+        "
       >
         <div
           class="
-            h-48
+            h-24
             rounded-lg
             p-2
             transform
             lg:text-2xl
-            flex flex-col
-            gap-2
+            flex flex-col flex-wrap
             justify-center
             items-center
             hover:scale-105
             duration-300
-            bg-gradient-to-tr
-            from-red-500
-            via-blue-500
-            to-yellow-500
-            text-white
+            bg-white
+            shadow-xl
+            hover:shadow-2xl
+            text-black
+            border-white
+            my-3
           "
         >
           <h1>{{ article.title }}</h1>
