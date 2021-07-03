@@ -18,15 +18,13 @@ export default defineComponent({
   },
 
   async mounted() {
-    const value = await axios
-      .get("https://joe-whiteaker-drf-blog.herokuapp.com/api/article")
+    axios
+      .get(
+        "https://joe-whiteaker-drf-blog.herokuapp.com/api/article/"
+      )
       .then((data) => data.data)
-      .then((data) => (this.apiData = data))
+      .then((data) => (this.apiData = data.reverse()))
       .catch((error) => console.log(error));
-
-    if (value) {
-      console.log(value, " = value");
-    }
   },
 });
 </script>
@@ -46,44 +44,47 @@ export default defineComponent({
         overflow-y-visible
       "
     >
-      <router-link
-        v-for="article in apiData.reverse()"
-        :key="article.id"
-        :to="{ name: 'BlogDetail', params: { id: article.id } }"
-        class="
-          transform
-          gap-2
-          justify-center
-          self-center
-          mx-5
-          h-48
-          my-5
-        "
-      >
-        <div
+      <div v-for="article in apiData" :key="article.id">
+        <router-link
+          :to="{ name: 'BlogDetail', params: { id: article.id } }"
           class="
-            h-24
-            rounded-lg
-            p-2
             transform
-            lg:text-2xl
-            flex flex-col flex-wrap
+            gap-2
             justify-center
+            flex
+            self-center
             items-center
-            hover:scale-105
-            duration-300
-            bg-white
-            shadow-xl
-            hover:shadow-2xl
-            text-black
-            border-white
-            my-3
+            mx-5
+            h-48
+            my-5
           "
         >
-          <h1>{{ article.title }}</h1>
-          <h6>{{ article.date }}</h6>
-        </div>
-      </router-link>
+          <div
+            class="
+              h-24
+              w-72
+              rounded-lg
+              p-2
+              transform
+              lg:text-xl
+              flex flex-col flex-wrap
+              justify-center
+              items-center
+              hover:scale-105
+              duration-300
+              bg-white
+              shadow-xl
+              hover:shadow-2xl
+              text-black
+              border-white
+              my-3
+            "
+          >
+            <h1>{{ article.title }}</h1>
+            <h6>{{ article.date }}</h6>
+          </div>
+        </router-link>
+      </div>
     </section>
   </div>
 </template>
