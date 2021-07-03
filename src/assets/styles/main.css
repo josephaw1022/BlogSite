@@ -1,6 +1,3 @@
-
-@taillwindcss /components";
+@taillwindcss /components;
 @tailwind components;
 @tailwind utilities;
-
-
