@@ -28,13 +28,6 @@ export default defineComponent({
       )
       .then((data) => data.data)
       .then((data) => (this.apiData = data))
-      .then((data) =>
-        this.$store.commit("setAPIData", { value: data })
-      )
-      .then(() => console.log(this.$store.state.apiData))
-      .then(() => {
-        console.log("apiData = ", this.apiData);
-      })
       .catch((error) => console.log(error));
   },
 });
