@@ -18,19 +18,21 @@ export default defineComponent({
   },
 
   async mounted() {
-    axios
-      .get(
-        "https://joe-whiteaker-drf-blog.herokuapp.com/api/article/"
-      )
+    const value = await axios
+      .get("https://joe-whiteaker-drf-blog.herokuapp.com/api/article")
       .then((data) => data.data)
       .then((data) => (this.apiData = data))
       .catch((error) => console.log(error));
+
+    if (value) {
+      console.log(value, " = value");
+    }
   },
 });
 </script>
 
 <template>
-  <div v-if="apiData.length > 0">
+  <div v-if="apiData.length > 1">
     <section
       class="
         min-h-screen
