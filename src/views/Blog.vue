@@ -17,10 +17,6 @@ export default defineComponent({
     };
   },
 
-  beforeMount() {
-    this.scrollTop();
-  },
-
   async mounted() {
     axios
       .get(
