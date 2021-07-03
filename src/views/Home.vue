@@ -35,7 +35,10 @@ export default defineComponent({
           class="
             gap-8
             sm:gap-4
-            flex flex-wrap flex-row
+            grid grid-flow-row
+            transform
+            grid-cols-1
+            md:grid-cols-3
             justify-evenly
           "
         >
@@ -45,8 +48,9 @@ export default defineComponent({
           >
             <Button text="Link tree" />
           </a>
-
-          <Button text="Contact Me" />
+          <a href="https://github.com/josephaw1022" target="_blank">
+            <Button text="Github" />
+          </a>
 
           <a
             href="https://joseph-whiteaker.netlify.app/"
