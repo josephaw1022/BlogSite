@@ -12,7 +12,7 @@ export default defineComponent({
         active: true,
       },
       id: String(this.$route.params.id),
-      url: "https://joe-whiteaker-drf-blog.herokuapp.com/api/article/",
+      url: "https://all-sites-api-22.herokuapp.com/api/article/",
       contentFormatted: [],
     };
   },

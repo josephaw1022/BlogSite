@@ -13,9 +13,7 @@ export default defineComponent({
 
   async mounted() {
     axios
-      .get(
-        "https://joe-whiteaker-drf-blog.herokuapp.com/api/article/"
-      )
+      .get("https://all-sites-api-22.herokuapp.com/api/article/")
       .then((data) => data.data)
       .then((data) => (this.apiData = data.reverse()))
       .catch((error) => console.log(error));
