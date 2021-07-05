@@ -11,6 +11,7 @@ export default defineComponent({
 
 <style lang="scss">
 @import url("./style/style.scss");
+@import url("./animations/transitions.scss");
 </style>
 
 <template>
@@ -25,7 +26,10 @@ export default defineComponent({
     "
   >
     <Navbar />
-    <router-view v-slot="{ Component, route }">
+    <router-view
+      v-slot="{ Component, route }"
+      v-show="$store.getters.showBodyValue"
+    >
       <transition :name="route.meta.transition">
         <component :is="Component" :key="$route.path"> </component>
       </transition>
