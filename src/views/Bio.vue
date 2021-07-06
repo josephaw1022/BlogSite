@@ -25,8 +25,6 @@
       <div
         class="
           customBackground
-          bg-green-500
-          border-green-500 border-2
           rounded-full
           w-56
           h-56
